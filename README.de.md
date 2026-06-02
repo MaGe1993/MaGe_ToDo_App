@@ -22,7 +22,8 @@ Die linke Seitenleiste listet Ihre Projekte auf. Die Reihenfolge hat Bedeutung: 
 - Dashboard — der oberste Eintrag öffnet die Übersicht über alle Projekte (siehe 5§).
 - Projekte filtern — das Suchfeld filtert die Seitenleiste während der Eingabe nach Namen. Bei eingeklappter Seitenleiste auf die Lupe klicken, um sie aufzuklappen und das Feld zu fokussieren.
 - Projekt öffnen — anklicken, um das zugehörige Board anzuzeigen.
-- Neues Projekt (Plus) — fügt ein neues Projekt hinzu und öffnet es.
+- Neu — fügt ein neues Projekt hinzu und öffnet es.
+- Archiv — öffnet die Archivseite mit Ihren archivierten Projekten (siehe 9§).
 - Seitenleiste einklappen — die Pfeil-Schaltfläche oben verschmälert die Seitenleiste auf reine Symbole.
 
 ## 3§ Das Board
@@ -39,7 +40,8 @@ Die Kopfzeile zeigt das Projekt-Emoji und den Namen, die Prioritätszahl, eine G
 - Suchen — filtert Aufgaben im gesamten Board nach Text.
 - Liste hinzufügen — fügt eine neue Liste hinzu (direkt vor `Done` eingefügt).
 - Projekt bearbeiten (Stift) — schaltet den Inline-Bearbeitungsmodus ein (siehe 3.4§).
-- Projekt löschen (Papierkorb) — löscht das Projekt nach einer Bestätigung. Deaktiviert, wenn nur noch ein Projekt übrig ist.
+- Projekt archivieren (Kiste) — verschiebt das Projekt ins Archiv (siehe 9§); es verschwindet aus Seitenleiste und Dashboard, behält aber alle Aufgaben und kann jederzeit zurückgeholt werden.
+- Projekt löschen (Papierkorb) — löscht das Projekt nach einer Bestätigung. Alle Projekte lassen sich löschen; die App zeigt dann einen Leerzustand.
 
 ### 3.2§ Aufgaben
 
@@ -49,8 +51,9 @@ Jede Aufgabe trägt einen Text, ein optionales Fälligkeitsdatum und nach Abschl
 - Datumsfeld — das Datum direkt eintippen (es formatiert sich während der Eingabe selbst, z. B. wird aus `12032026` der Wert `12.03.2026`) oder auf das Kalendersymbol klicken, um es auszuwählen. Das Format folgt Ihrer Einstellung.
 - Aufgabe abschließen — auf den Häkchenkreis klicken oder die Aufgabe in die Liste `Done` ziehen. Damit wird das heutige Datum als Erledigungsdatum gesetzt.
 - Aufgabe wieder öffnen — aus `Done` herausziehen; das Erledigungsdatum wird gelöscht.
-- Aufgabe bearbeiten — anklicken, um Text und Fälligkeitsdatum inline zu bearbeiten. Wird der Text geleert, wird die Aufgabe gelöscht.
+- Aufgabe bearbeiten — anklicken, um Text, Fälligkeitsdatum und Routine inline zu bearbeiten. Wird der Text geleert, wird die Aufgabe gelöscht.
 - Aufgabe verschieben — in eine andere Liste ziehen; eine Einfügelinie zeigt die Ablageposition.
+- Routine-Aufgabe — sobald ein Fälligkeitsdatum gesetzt ist, macht der Kreis-Pfeil-Button daneben die Aufgabe wiederkehrend (täglich, wöchentlich, monatlich oder alle N Tage). Beim Abschließen bleibt die erledigte Kopie in `Done` und es entsteht sofort die nächste Aufgabe mit dem nächsten Fälligkeitsdatum. Routine-Aufgaben tragen das Kreis-Pfeil-Symbol.
 
 ### 3.3§ Fälligkeits-Bezeichnungen
 
@@ -98,10 +101,11 @@ Eine Karte je Projekt mit Gesundheits-LED, Fortschrittsbalken und einer Aufschl�
 
 Die Einstellungen erreichen Sie über das Zahnrad in der Titelleiste. Abschnitte:
 
-- Darstellung — Design (Dunkel / Hell / System), Akzentfarbe (Farbfeld plus HEX/RGB/HSL-Felder) und ein Animationsschalter.
+- Darstellung — Design (Dunkel / Hell / System), Akzentfarbe (eine Reihe Schnellwahl-Farbfelder, das Live-Farbfeld und HEX/RGB/HSL-Felder), ein Animationsschalter und ein Schalter für Textumbruch in den Listen.
 - Sprache & Region — Oberflächensprache (Englisch / Deutsch), Zeitzone, Datumsformat, Zahlenformat und die Liste der Dashboard-Uhren (benannte Weltzeituhren hinzufügen; jede Zeile hat eine Löschen-Schaltfläche, eine Bezeichnung und eine Zone).
-- Benachrichtigungen — ein Hauptschalter für Desktop-Benachrichtigungen, ein Ton-Schalter (spielt einen sanften Klang), Ruhezeiten und Schalter je Ereignis: Heute fällige Aufgaben, Überfällige Aufgaben, Tageszusammenfassung, Aufgabe abgeschlossen. Jedes zeitgesteuerte Ereignis hat eine Uhrzeitauswahl, wann es auslöst (Standard: heute fällig 09:00, überfällig 10:00, Tageszusammenfassung 14:00). Der Abschluss einer Aufgabe meldet sofort; die zeitgesteuerten lösen einmal täglich zur eingestellten Zeit aus. Jede Benachrichtigung berücksichtigt den Hauptschalter, ihren eigenen Schalter und die Ruhezeiten.
+- Benachrichtigungen — ein Hauptschalter für Desktop-Benachrichtigungen, ein Ton-Schalter (spielt einen sanften Klang), Ruhezeiten und Schalter je Ereignis: Heute fällige Aufgaben, Überfällige Aufgaben, Tageszusammenfassung, Aufgabe abgeschlossen und Backup erstellt. Zeitgesteuerte Ereignisse haben eine Uhrzeitauswahl (Standard: heute fällig 09:00, überfällig 10:00, Tageszusammenfassung 14:00); der Abschluss einer Aufgabe und das Erstellen eines Backups melden sofort. Jede Benachrichtigung berücksichtigt den Hauptschalter, ihren eigenen Schalter und die Ruhezeiten.
 - Projekte — konfiguriert die Projektgesundheit. Abgeschlossene Aufgaben zählen nicht zur Gesundheit. Die treibende Größe ist das Risiko = der schlechtere von zwei Prozentwerten: überfällige offene Aufgaben gegenüber allen offenen Aufgaben sowie der Gesamtverzug der offenen Aufgaben gegenüber der geplanten Projektspanne. Zwei Steller legen die Schwellen fest (Standard 5 und 20): Risiko bis zur ersten ist gut, über der zweiten ist Fehler, dazwischen ist Warnung. Die Karte zeigt die drei Zustände mit ihren LEDs.
+- Backup — speichert oder lädt den vollständigen App-Inhalt (alle Projekte aktiv und archiviert, jede Aufgabe und alle Einstellungen) als eine Datei. Das automatische Backup kann täglich, wöchentlich oder monatlich in einen gewählten Ordner laufen; standardmäßig wird der eigene Backup-Ordner der App verwendet. Siehe 10§.
 
 ## 7§ Dokumentationsseiten
 
@@ -116,3 +120,15 @@ Das Fragezeichen-Menü in der Titelleiste öffnet:
 ## 8§ Steuerung durch KI-Agenten
 
 Jede laufende Instanz stellt zusätzlich einen lokalen Steuerungsserver bereit, damit ein externer KI-Agent (etwa Claude Code) Ihre Projekte lesen und die App steuern kann — Aufgaben hinzufügen und abschließen, Projekte umsortieren, Einstellungen ändern und mehr. Er lauscht nur auf Ihrem eigenen Rechner und erfordert ein Token. Einzelheiten finden Sie auf der MCP-Server-Seite in der App.
+
+## 9§ Das Archiv
+
+Beim Archivieren eines Projekts (Kisten-Schaltfläche in der Board-Kopfzeile) verschwindet es aus Seitenleiste und Dashboard, behält aber alle Aufgaben. Öffnen Sie das Archiv über die Seitenleiste, um pro archiviertem Projekt eine Karte zu sehen — mit Titel, Fortschritt, Aufgaben gesamt, Start- und Enddatum, Laufzeit und Archivierungsdatum. Sortieren Sie die Karten über die Schaltflächen in der Kopfzeile nach Name, Start, Ende, Laufzeit, Aufgabenanzahl oder Fortschritt, auf- oder absteigend. Reaktivieren holt ein Projekt als unterstes in die Seitenleiste zurück und öffnet es.
+
+## 10§ Backup und Wiederherstellung
+
+Öffnen Sie Einstellungen → Backup.
+
+- Backup speichern — wählen Sie, wohin die Backup-Datei geschrieben wird. Sie enthält alles: alle Projekte (aktiv und archiviert), jede Aufgabe und alle Einstellungen. Dateien heißen `MaGe_ToDo_Backup_<Datum>-<Zeit>.json`.
+- Backup laden — wählen Sie eine Backup-Datei zur Wiederherstellung. Die App ersetzt ihren aktuellen Inhalt samt Einstellungen durch das Backup und lädt neu.
+- Automatisches Backup — einschalten und täglich, wöchentlich oder monatlich plus einen Ordner wählen. Standard ist der eigene Backup-Ordner der App. Backups werden geschrieben, während die App läuft; war der PC zur fälligen Zeit aus, schreibt der nächste Start das überfällige Backup. Jedes Backup zeigt eine Benachrichtigung „Backup erstellt".

@@ -22,7 +22,8 @@ The left sidebar lists your projects. The order is meaningful: a project's posit
 - Dashboard — the top entry opens the overview across all projects (see 5§).
 - Filter projects — the search field filters the sidebar by name as you type. On a collapsed sidebar, click the magnifier to expand and focus it.
 - Open a project — click it to show its board.
-- New project (plus) — adds a new project and opens it.
+- New — adds a new project and opens it.
+- Archive — opens the Archive page listing your archived projects (see 9§).
 - Collapse the sidebar — the chevron button at the top narrows the sidebar to icons only.
 
 ## 3§ The board
@@ -39,7 +40,8 @@ The header shows the project emoji and name, its priority number, a health LED, 
 - Search — filters tasks across the board by text.
 - Add list — adds a new list (inserted just before `Done`).
 - Edit project (pencil) — turns on inline edit mode (see 3.4§).
-- Delete project (trash) — deletes the project after a confirmation. Disabled when only one project remains.
+- Archive project (box) — moves the project into the Archive (see 9§); it disappears from the sidebar and dashboard but keeps all its tasks and can be brought back any time.
+- Delete project (trash) — deletes the project after a confirmation. All projects can be deleted; the app then shows an empty state.
 
 ### 3.2§ Tasks
 
@@ -49,8 +51,9 @@ Each task carries a text, an optional due date, and a completion date once finis
 - Due date field — type the date directly (it formats itself as you type, e.g. `12032026` becomes `12.03.2026`), or click the calendar icon to pick it. The format follows your Settings choice.
 - Complete a task — click its check-circle, or drag it into the `Done` list. This stamps today as the completion date.
 - Reopen a task — drag it out of `Done`; the completion date is cleared.
-- Edit a task — click it to edit its text and due date inline. Clearing the text deletes the task.
+- Edit a task — click it to edit its text, due date and routine inline. Clearing the text deletes the task.
 - Move a task — drag it to another list; an insertion line shows the drop position.
+- Routine task — once a due date is set, the circular-arrows button next to it makes the task recurring (daily, weekly, monthly or every N days). Completing a routine task keeps the finished copy in `Done` and immediately creates the next occurrence with the next due date. Routine tasks show the circular-arrows marker.
 
 ### 3.3§ Due labels
 
@@ -98,10 +101,11 @@ A card per project with its health LED, completion bar, and a per-list breakdown
 
 Reach Settings from the gear in the title bar. Sections:
 
-- Appearance — theme (Dark / Light / System), accent color (swatch plus HEX/RGB/HSL fields), and an animation toggle.
+- Appearance — theme (Dark / Light / System), accent color (a row of quick-pick swatches, the live swatch, and HEX/RGB/HSL fields), an animation toggle, and a list text-wrapping toggle.
 - Language & region — interface language (English / German), time zone, date format, number format, and the Dashboard clocks list (add named world clocks; each row has a delete button, a label, and a zone).
-- Notifications — a master switch for desktop notifications, a sounds toggle (plays a soft chime), do-not-disturb hours, and per-event toggles: Tasks due today, Tasks overdue, Daily summary, Task completed. Each timed event has a time-of-day picker for when it fires (defaults: due today 09:00, overdue 10:00, daily summary 14:00). Completing a task notifies immediately; the timed ones fire once per day at their set time. Every notification honours the master switch, its own toggle, and do-not-disturb.
+- Notifications — a master switch for desktop notifications, a sounds toggle (plays a soft chime), do-not-disturb hours, and per-event toggles: Tasks due today, Tasks overdue, Daily summary, Task completed, and Backup created. Timed events have a time-of-day picker (defaults: due today 09:00, overdue 10:00, daily summary 14:00); completing a task and creating a backup notify immediately. Every notification honours the master switch, its own toggle, and do-not-disturb.
 - Projects — configures project health. Completed tasks do not count toward health. The driving figure is Risk = the worse of two percentages: overdue open tasks vs. all open tasks, and total delay of open tasks vs. the project's planned span. Two steppers set the thresholds (defaults 5 and 20): Risk at or below the first is success, above the second is error, in between is warning. The card shows the three states with their LEDs.
+- Backup — save or load the complete app content (all projects active and archived, every task, and all settings) as a single file. Auto-backup can run daily, weekly or monthly into a folder you choose; by default it uses the app's own backups folder. See 10§.
 
 ## 7§ Documentation pages
 
@@ -116,3 +120,15 @@ The question-mark menu in the title bar opens:
 ## 8§ AI agent control
 
 Every running instance also exposes a local control server so an external AI agent (such as Claude Code) can read your projects and drive the app — add and complete tasks, reorder projects, change settings, and more. It listens only on your own machine and requires a token. See the MCP Server page in the app for details.
+
+## 9§ The archive
+
+Archiving a project (the box button in the board header) moves it out of the sidebar and dashboard while keeping all its tasks. Open the Archive from the sidebar to see one card per archived project showing its title, progress, total tasks, start and end dates, runtime, and the date it was archived. Sort the cards by name, start, end, runtime, task count or progress, ascending or descending, using the buttons in the header. Reactivate returns a project to the sidebar as the last entry and opens it.
+
+## 10§ Backup and restore
+
+Open Settings → Backup.
+
+- Save backup — choose where to write a backup file. It contains everything: all projects (active and archived), every task, and all your settings. Files are named `MaGe_ToDo_Backup_<date>-<time>.json`.
+- Load backup — pick a backup file to restore. The app replaces its current content and settings with the backup and reloads.
+- Auto-backup — turn it on and pick daily, weekly or monthly plus a folder. The default folder is the app's own backups folder. Backups are written while the app is running; if your PC was off at the due time, the next launch writes the overdue backup. Each backup shows a "Backup created" notification.
